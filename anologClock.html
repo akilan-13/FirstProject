@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-image: linear-gradient(to right,blue,skyblue);
+        }
+        .circle{
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            border:4px solid black;
+            border-radius: 50%;
+            position: relative;
+        }
+        .number{
+            font-size: 25px;
+            font-weight: bold;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            --rotation:0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform: rotate(var(--rotation));
+        }
+        .number1{--rotation:30deg;}
+        .number2{--rotation:60deg;}
+        .number3{--rotation:90deg;}
+        .number4{--rotation:120deg;}
+        .number5{--rotation:150deg;}
+        .number6{--rotation:180deg;}
+        .number7{--rotation:210deg;}
+        .number8{--rotation:240deg;}
+        .number9{--rotation:270deg;}
+        .number10{--rotation:300deg;}
+        .number11{--rotation:330deg;}
+
+        .hand{
+            --rotation:0;
+            position: absolute;
+            background-color: black;
+            width: 10px;
+            height: 200px;
+            left:50%;
+            bottom: 50%;
+            z-index: 10;
+            transform-origin: bottom;
+            transform:translateX(-50%) rotate(calc(var(--rotation)*1deg)) ;
+        }
+        .circle::after{
+            content:'';
+            position:absolute;
+            width: 20px;
+            height: 20px;
+            background-color:black;
+            border-radius: 50%;
+            z-index: 11;
+            left:50%;
+            bottom: 50%;
+            transform: translate(-50%,50%);
+
+        }
+        .hr{ 
+            width: 15px;
+            height: 28%;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+        }
+        .min{
+            width: 6px;
+            height: 34%;
+            background-color: blue;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+        }
+        .sec{
+            width: 3px;
+            height: 40%;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%; 
+            background-color: red;
+        }
+        h2{
+            position: absolute;
+            font-family: Verdana,Tahoma, sans-serif;
+            color: rgb(255, 153, 0);
+            z-index: 7;
+            left: 50%;
+            top: 20%;
+            transform: translate(-50%,-10%);
+        }
+    </style>
+</head>
+<body>
+    <div class="circle" id="circle">
+        <div class="hand hr" id="hr"></div>
+        <div class="hand min"id="min"></div>
+        <div class="hand sec" id="sec"></div>
+        <div class="number number1">1</div>
+        <div class="number number2">2</div>
+        <div class="number number3">3</div>
+        <div class="number number4">4</div>
+        <div class="number number5">5</div>
+        <div class="number number6">6</div>
+        <div class="number number7">7</div>
+        <div class="number number8">8</div>
+        <div class="number number9">9</div>
+        <div class="number number10">10</div>
+        <div class="number number11">11</div>
+        <div class="number number12">12</div>
+        <h2 class="brand">FAST TRACK</h2>
+    </div>
+    <script>
+        setInterval(updateClock,1000);
+        
+        const hour=document.querySelector('.hr');
+        const minute=document.querySelector('.min');
+        const second=document.querySelector('.sec');
+
+        function updateClock(){
+            const currentTime=new Date();
+            const secRatio=currentTime.getSeconds()/60;
+            const minRatio=(secRatio+currentTime.getMinutes())/60;
+            const hrRatio=(minRatio+currentTime.getHours())/12;
+
+            console.log(secRatio*360,minRatio,hrRatio);
+
+           hour.style.setProperty('--rotation',hrRatio*360);
+           minute.style.setProperty('--rotation',minRatio*360);
+           second.style.setProperty('--rotation',secRatio*360);
+        }
+        updateClock();
+    </script>
+</body>
+</html>
