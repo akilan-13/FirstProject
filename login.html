@@ -88,7 +88,7 @@
             border-radius: 20px;
             border: 2px solid #ffffff5b;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-            transform: scale(1);
+            transform: scale(0);
             transition: height .2s ease,transform .2s ease;
             overflow: hidden;
         }
@@ -192,7 +192,7 @@
         .login-box{
             transform: scale(1);
         }
-        @media (width<760px){
+        @media (width<650px){
             nav a{
                 display: none;
             }
@@ -217,12 +217,12 @@
             <h1>Login</h1>
             <div class="input-box">
                 <span class="icon">.</span>
-                <input type="text" name="userName" id="userName" autocomplete="off">
+                <input type="text" name="userName" required id="userName" autocomplete="off">
                 <label>UserName</label>
             </div>
             <div class="input-box">
                 <span class="icon">.</span>
-                <input type="password" id="Password">
+                <input type="password" id="Password" required>
                 <label>Password</label>
             </div>
             <div class="forget-remember">
@@ -239,17 +239,17 @@
             <h1>Register</h1>
             <div class="input-box">
                 <span class="icon"></span>
-                <input type="text" id="userName" autocomplete="off">
+                <input type="text" id="userName" autocomplete="off" required>
                 <label for="userName">UserName</label>
             </div>
             <div class="input-box">
                 <span class="icon"></span>
-                <input type="email" id="email" autocomplete="off">
+                <input type="email" id="email" autocomplete="off" required>
                 <label>Email Id</label>
             </div>
             <div class="input-box">
                 <span class="icon"></span>
-                <input type="password" id="Password">
+                <input type="password" id="Password" required>
                 <label>Password</label>
             </div>
             <button class="log">Register</button>
